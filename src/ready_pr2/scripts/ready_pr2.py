@@ -53,16 +53,13 @@ if __name__ == "__main__":
     rc = moveit_commander.RobotCommander()
     rospy.loginfo("robot commander is initialized")
 
-    import IPython
-    IPython.embed()
+    home_left_arm()
+    rospy.loginfo("left arm homed")
 
-    # home_left_arm()
-    # rospy.loginfo("left arm homed")
+    home_right_arm()
+    rospy.loginfo("right arm homed")
 
-    # home_right_arm()
-    # rospy.loginfo("right arm homed")
-
-    # home_head()
-    # rospy.loginfo("head homed")    
+    home_head()
+    rospy.loginfo("head homed")    
     
     moveit_commander.roscpp_shutdown()
