@@ -10,6 +10,11 @@
   <!--Start up the gazebo simulator with the PR2 robot inside it-->
   <include file="$(find pr2_gazebo)/launch/pr2_empty_world.launch"/>
 
+  <!-- Start MoveIt -->
+  <include file="$(find pr2_moveit_config)/launch/move_group.launch" >
+    <arg name="info" value="true"/><!-- publish grasp markers -->
+  </include>
+
   <!-- Add table to the world -->
   <node name="spawn_table" pkg="gazebo_ros" type="spawn_model" 
    args="-urdf -file $(find pr2_launch)/models/table.urdf -model table -x 1.15 -y 0.5"
