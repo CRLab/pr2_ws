@@ -34,6 +34,13 @@ def home_head():
     p = mgc.plan()
     mgc.execute(p)    
 
+def home_torso():
+    mgc = moveit_commander.MoveGroupCommander("torso")
+    jv = mgc.get_current_joint_values()
+    jv[0] = 0.15
+    mgc.set_joint_value_target(jv)
+    p = mgc.plan()
+    mgc.execute(p)
 
 if __name__ == "__main__":
     
@@ -46,13 +53,16 @@ if __name__ == "__main__":
     rc = moveit_commander.RobotCommander()
     rospy.loginfo("robot commander is initialized")
 
-    home_left_arm()
-    rospy.loginfo("left arm homed")
+    import IPython
+    IPython.embed()
 
-    home_right_arm()
-    rospy.loginfo("right arm homed")
+    # home_left_arm()
+    # rospy.loginfo("left arm homed")
 
-    home_head()
-    rospy.loginfo("head homed")    
+    # home_right_arm()
+    # rospy.loginfo("right arm homed")
+
+    # home_head()
+    # rospy.loginfo("head homed")    
     
     moveit_commander.roscpp_shutdown()
